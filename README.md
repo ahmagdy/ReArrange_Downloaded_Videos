@@ -1,4 +1,4 @@
-# ReArrange_Downloaded_Videos
+# Re Arrange Downloaded Videos
 a small tool to re arrange downloaded videos course from Pluarlsight site by using youtube-dl
 
 <img src="https://media.giphy.com/media/3oEjHPsv3cOn8s9L0c/giphy.gif"/>

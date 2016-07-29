@@ -6,3 +6,6 @@ c:\users\ahmed\documents\visual studio 2015\Projects\ReArrange Files\ReArrange F
 c:\users\ahmed\documents\visual studio 2015\Projects\ReArrange Files\ReArrange Files\obj\Debug\ReArrange Files.csproj.GenerateResource.Cache
 c:\users\ahmed\documents\visual studio 2015\Projects\ReArrange Files\ReArrange Files\obj\Debug\ReArrange Files.exe
 c:\users\ahmed\documents\visual studio 2015\Projects\ReArrange Files\ReArrange Files\obj\Debug\ReArrange Files.pdb
+C:\Users\ahmed\Documents\GitHub\ReArrange_Downloaded_Videos\ReArrange Files\bin\Debug\ReArrange Files.exe.config
+C:\Users\ahmed\Documents\GitHub\ReArrange_Downloaded_Videos\ReArrange Files\obj\Debug\ReArrange Files.exe
+C:\Users\ahmed\Documents\GitHub\ReArrange_Downloaded_Videos\ReArrange Files\obj\Debug\ReArrange Files.pdb

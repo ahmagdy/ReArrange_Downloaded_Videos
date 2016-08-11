@@ -9,6 +9,7 @@ namespace ReArrange_Files
             // To Get All Files In Directory
             string[] files = Directory.GetFiles(path);
             string folderName; // declare varible will hold a new Folder name
+            string tempFolderNum;// declare varible to hold folder number
             //loop through each file in directory
             foreach (var file in files)
             {
@@ -17,13 +18,17 @@ namespace ReArrange_Files
                  * so we take it 
                  */
                 folderName = file.Substring(0, file.IndexOf('-') - 1);
+                //take a number of the folder from the file name 
+                tempFolderNum = file.Remove(file.LastIndexOf('.'));
+                tempFolderNum = tempFolderNum.Substring(tempFolderNum.LastIndexOf('m') + 1, 1) + " - ";
+                //We Insert The Folder Number from the file name
+                folderName = folderName.Insert(folderName.LastIndexOf(@"\") + 1, tempFolderNum);
                 /* 
                  * check if the directory of folder dosen't  exsis to create it
                  * we get the directory from file name then we add a new folderName to it
                  */
                 if (!Directory.Exists(Path.GetDirectoryName(file + @"\" + folderName)))
                 {
-                    //create new folder in the same directory
                     Directory.CreateDirectory(folderName);
                 }
             }
@@ -36,6 +41,7 @@ namespace ReArrange_Files
             // To Get All Files In Directory
             string[] files = Directory.GetFiles(path);
             string newFolder;// declare varible will hold a path of files
+            string tempFolderNum;// declare varible to hold folder number
             //loop through each file in directory
             foreach (var file in files)
             {
@@ -43,10 +49,16 @@ namespace ReArrange_Files
                  * C:\..\What Is Programming\The Rules of Programming Languages - Keywords....
                  * first we take a path of file from begging to firt - that will represent 
                  *                      the folder minus 1 because of  space in the end of path
+                 * then we will add the folder number as we do in the folder naming 
                  * then we will add file name to it 
                  * so will looklike this   "FullPath\folder\file"
                  */
-                newFolder = file.Substring(0, file.IndexOf('-') - 1) + @"\" + file.Substring(file.LastIndexOf(@"\") + 1);
+                //take a number of the folder from the file name 
+                tempFolderNum = file.Remove(file.LastIndexOf('.'));
+                tempFolderNum = tempFolderNum.Substring(tempFolderNum.LastIndexOf('m') + 1, 1) + " - ";
+                newFolder = file.Substring(0, file.IndexOf('-') - 1);
+                newFolder = newFolder.Insert(newFolder.LastIndexOf(@"\") + 1, tempFolderNum);
+                newFolder += @"\" + file.Substring(file.LastIndexOf(@"\") + 1);
                 //Move the file to new Folder
                 File.Move(file, newFolder);
             }

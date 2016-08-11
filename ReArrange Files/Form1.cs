@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Windows.Forms;
-using static System.Environment;
 
 namespace ReArrange_Files
 {
@@ -61,17 +60,6 @@ namespace ReArrange_Files
                 {
                     MessageBox.Show("Bad Path");
                 }
-            }
-        }
-
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-            FolderBrowserDialog fd = new FolderBrowserDialog();
-            fd.RootFolder = SpecialFolder.Desktop;
-            if(fd.ShowDialog() == DialogResult.OK)
-            {
-                PathTB.Text = fd.SelectedPath;
-                MessageBox.Show("Choose any option from radion buttons then press enter on the textbox","",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
     }

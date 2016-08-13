@@ -20,7 +20,7 @@ namespace ReArrange_Files
                 folderName = file.Substring(0, file.IndexOf('-') - 1);
                 //take a number of the folder from the file name 
                 tempFolderNum = file.Remove(file.LastIndexOf('.'));
-                tempFolderNum = tempFolderNum.Substring(tempFolderNum.LastIndexOf('m') + 1, 1) + " - ";
+                tempFolderNum = tempFolderNum.Substring(tempFolderNum.LastIndexOf('m') + 1, ((tempFolderNum.LastIndexOf('-')) - (tempFolderNum.LastIndexOf('m') + 1))) + " - ";
                 //We Insert The Folder Number from the file name
                 folderName = folderName.Insert(folderName.LastIndexOf(@"\") + 1, tempFolderNum);
                 /* 
@@ -55,7 +55,7 @@ namespace ReArrange_Files
                  */
                 //take a number of the folder from the file name 
                 tempFolderNum = file.Remove(file.LastIndexOf('.'));
-                tempFolderNum = tempFolderNum.Substring(tempFolderNum.LastIndexOf('m') + 1, 1) + " - ";
+                tempFolderNum = tempFolderNum.Substring(tempFolderNum.LastIndexOf('m') + 1, ((tempFolderNum.LastIndexOf('-')) - (tempFolderNum.LastIndexOf('m') + 1))) + " - ";
                 newFolder = file.Substring(0, file.IndexOf('-') - 1);
                 newFolder = newFolder.Insert(newFolder.LastIndexOf(@"\") + 1, tempFolderNum);
                 newFolder += @"\" + file.Substring(file.LastIndexOf(@"\") + 1);
@@ -65,11 +65,12 @@ namespace ReArrange_Files
         }
 
 
-        public static void ReArrangeFiles(string FilePath)
+        public static void ReArrangeFiles(string FilePath, bool isMovedFromFolder)
         {
             // To Get All Files In Directory
             string[] files = Directory.GetFiles(FilePath);
             string NewFileName; // declare varible will hold a new name of the file 
+            int filenum; //holds the file number to move it to the first of the name
             //loop through each file in directory
             foreach (var file in files)
             {
@@ -81,10 +82,20 @@ namespace ReArrange_Files
                 NewFileName = file.Substring(file.LastIndexOf(@"\") + 1, file.LastIndexOf('.') - file.LastIndexOf(@"\") - 1);
                 //Remove the folder name from downloaded file 
                 NewFileName = NewFileName.Substring(NewFileName.IndexOf('-') + 1);
-                // copy file number and move it to the beggining of the file name
-                NewFileName = NewFileName.Substring(NewFileName.LastIndexOf('m')) + "- " + NewFileName;
+                //Chek if the file moved from folder to Remove mxx from file name
+                if (!isMovedFromFolder)
+                {
+                    // copy file number and move it to the beggining of the file name
+                    NewFileName = NewFileName.Substring(NewFileName.LastIndexOf('m')) + "- " + NewFileName;
+                }
+                else
+                {
+                    // copy file number and move it to the beggining of the file name without mxx
+                    NewFileName = NewFileName.Substring(NewFileName.LastIndexOf('-') + 1) + "- " + NewFileName;
+                }
                 //remove the file name from the end of file
                 NewFileName = NewFileName.Remove(NewFileName.LastIndexOf('m') - 1);
+
                 //In C# we can move cause we don't have rename , replace old path with new path and new file name and add extension
                 File.Move(file, Path.GetDirectoryName(file) + @"\" + NewFileName + ".mp4");
             }

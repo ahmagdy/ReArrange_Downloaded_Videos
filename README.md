@@ -2,6 +2,8 @@
 a small tool to re arrange downloaded videos course from Pluarlsight site by using youtube-dl
 
 <img src="https://media.giphy.com/media/3oEjHPsv3cOn8s9L0c/giphy.gif"/>
+<br/>
+<img src="https://media.giphy.com/media/3o6Zt8BrIiby7ka1EY/giphy.gif"/>
 
 ```
 This tool has 3 options 
